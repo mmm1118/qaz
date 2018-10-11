@@ -11,6 +11,13 @@ const actions = {
   },
   CHANGENAVHIDE:({commit}) => {
     commit('CHANGENAVHIDE')
+  },
+  SAVETOKEN:({commit,user}) => {
+    console.log(user)
+    commit('SAVETOKEN',user)
+  },
+  REMOVETOKEN:({commit}) => {
+    commit('REMOVETOKEN')
   }
 }
 

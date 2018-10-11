@@ -8,6 +8,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'element-ui/lib/theme-chalk/display.css';
 
+
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 
@@ -18,4 +19,17 @@ new Vue({
   store,
   components: { App },
   template: '<App/>'
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) {
+    //设置了需要登陆才能访问的页面
+    if (store.state.token) {
+      next()
+    } else {
+      next({path: '/login', query: {backUrl: to.fullPath}})
+    }
+  } else {
+    next()
+  }
 })

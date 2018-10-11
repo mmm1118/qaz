@@ -1,11 +1,11 @@
 <template>
   <div class="Nav">
     <div class='icon'></div>
-    <div class='navWrpa' v-for="(item,index) in navList">
-      {{item.title}}
+    <div class='navWrpa post-title-link' v-for="(item,index) in navList">
+      <router-link :to='item.router'>{{item.router}}</router-link>
     </div>
     <div class='rightWrap '>
-      <div class='navWrpa login' @click='_handleLogin'>登陆</div>
+      <div class='navWrpa login' @click='_handleLogin'>{{isLogin}}</div>
       <div class='navWrpa setting'>设置</div>
     </div>
   </div>
@@ -13,6 +13,7 @@
 
 <script>
   import {mapGetters, mapActions} from 'Vuex'
+
   export default {
     props: {
       navList: {
@@ -22,9 +23,18 @@
         }
       }
     },
+    computed: {
+      ...mapGetters([
+        'userName',
+        'token'
+      ]),
+      isLogin (){
+        return this.token ? this.userName : '登陆'
+      }
+    },
     methods: {
       _handleLogin() {
-        this.$router.push({path:'/login'})
+        this.$router.push({path: '/login'})
       }
     }
 
@@ -48,7 +58,7 @@
       background: url("../../../static/icon.png") no-repeat center;
       -webkit-background-size: cover;
       background-size: cover;
-      margin:0 30px;
+      margin: 0 30px;
     }
     .navWrpa {
       height: 100%;
@@ -66,11 +76,45 @@
       top: 0;
       right: 0;
       display: flex;
-      .login{
+      .login {
 
       }
-
     }
+  }
+
+  .post-title-link {
+    color: #3f51b5;
+    position: relative;
+    display: inline-block
+  }
+
+  .post-title-link::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #3f51b5;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out
+  }
+
+  .post-title-link:hover {
+    text-decoration: none
+  }
+
+  .post-title-link:hover::after, .post-title-link:active::after {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1)
+  }
+
+  .post-title-link:active {
+    color:red;
   }
 
 

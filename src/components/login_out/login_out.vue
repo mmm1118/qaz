@@ -57,6 +57,7 @@
         checked: true
       }
     },
+
     methods: {
       _loginMode () {
         this.status = 0
@@ -68,14 +69,13 @@
 
       },
       async _handleLogin () {
-        console.log(api)
         if (this.username === '' || this.password === '') {
           this.$message({
             message: '请输入用户名或者密码！',
             center: true,
             type: 'error'
           });
-          return
+          return false;
         }
         const params = {
           userName: this.username,
@@ -84,6 +84,15 @@
         let res = await api.login(params)
         if (res.code === 1) {
           this.$message.success(res.data);
+          const user = {
+            userName : this.username,
+            token : res.token
+          }
+          this.$store.commit('SAVETOKEN',user)
+          const backUrl = this.$route.query.backUrl
+          if(backUrl) {
+            this.$router.push(backUrl)
+          }
         }else {
           this.$message.error(res.data);
         }

@@ -5,6 +5,12 @@ const getters = {
   },
   isShowNav(state) {
     return state.isShowNav
+  },
+  userName(state) {
+    return state.userName
+  },
+  token(state) {
+    return state.token
   }
 }
 

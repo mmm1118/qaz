@@ -2,19 +2,19 @@ const  config = {
   nav:[
     {
       title:'首页',
-      router:'Home'
+      router:'home'
     },
     {
       title:'音乐',
-      router:'Music'
+      router:'music'
     },
     {
       title:'图片',
-      router:'Image'
+      router:'image'
     },
     {
       title:'关于',
-      router:'About'
+      router:'about'
     },
   ]
 }

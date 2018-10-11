@@ -7,7 +7,6 @@ import actions from './actions'
 import mutations from './mutations'
 Vue.use(Vuex);
 
-console.log('aaa')
 
 
 const store = new Vuex.Store({

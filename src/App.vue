@@ -77,6 +77,13 @@
     font-style: normal;
     color: #FF5442;
   }
+  a{
+    text-decoration:none;
+    color: hsl(236, 100%, 92%);
+    display: inline-block;
+    height: 100%;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+  }
 
   body, html {
     width: 100%;
