@@ -121,7 +121,7 @@
       min-height: 300px;
       max-width: 340px;
       padding: 5px 0px;
-      transform: translate3d(0,-50%,0);
+      transform: translate3d(-50%,-50%,0);
       background: rgba(0,0,0,0.4);
       .login_select {
         width: 100%;

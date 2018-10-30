@@ -6,6 +6,7 @@ import Home from '@/components/home/home'
 import Music from '@/components/music/music'
 import Image from '@/components/image/image'
 import Login from '@/components/login_out/login_out'
+import About from '@/components/about/About'
 
 Vue.use(Router)
 
@@ -17,6 +18,11 @@ export default new Router({
       component: Home
     },
     {
+      path: '/HelloWorld',
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
+    {
       path: '/test',
       name: 'Test',
       component: Test
@@ -25,6 +31,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
     },
     {
       path: '/music',
